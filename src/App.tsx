@@ -79,10 +79,10 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>Sobranada</h1>
+    <div className="container">
+      <h1 className="titulo">Sobranada</h1>
 
-      <form onSubmit={salvarAlimento}>
+      <form className="formulario" onSubmit={salvarAlimento}>
         <input
           type="text"
           placeholder="Nome (ex: Tomate)"
@@ -112,23 +112,28 @@ function App() {
           onChange={(e) => setValidade(e.target.value)}
         />
 
-        <button type="submit">{editandoId ? "Salvar alterações" : "Adicionar"}</button>
-        {editandoId && (<button type="button" onClick={limparFormulario}>Cancelar</button>)}
+        <button type="submit" className="btn btn-principal">{editandoId ? "Salvar alterações" : "Adicionar"}</button>
+        {editandoId && (<button type="button" className="btn btn-cancelar" onClick={limparFormulario}>Cancelar</button>)}
       </form>
 
-      {erro && <p style={{ color: "#dc2626" }}>{erro}</p>}
+      {erro && <p className="erro">{erro}</p>}
 
-      <ul>
+      <ul className="lista">
         {alimentos.map((alimento) => {
           const dias = diasParaVencer(alimento.validade);
           const cor = corDaValidade(dias);
 
           return (
-            <li key={alimento.id} style={{ color: cor, fontWeight: "bold" }}>
-              {alimento.nome} - {alimento.quantidade} {alimento.unidade} |{" "}
-              {textoDaValidade(dias)}
-              <button onClick={() => iniciarEdicao(alimento)}>Editar</button>{" "}
-              <button onClick={() => excluirAlimento(alimento.id)}>Excluir</button>
+            <li key={alimento.id} className="item" style={{ borderLeftColor: cor }}>
+              <div className="item-info">
+                <strong>{alimento.nome}</strong>
+                 <span>{alimento.quantidade} {alimento.unidade}</span>
+                  <span className="validade" style={{ color: cor}}>{textoDaValidade(dias)}</span>
+              </div>
+              <div className='item-botoes'>
+                <button className="btn btn-editar" onClick={() => iniciarEdicao(alimento)}>Editar</button>{" "}
+                <button className="btn btn-excluir" onClick={() => excluirAlimento(alimento.id)}>Excluir</button>
+              </div>
             </li>
           );
         })}

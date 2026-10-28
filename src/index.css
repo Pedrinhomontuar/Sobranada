@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: rgb (96, 97, 96);
+    color: #1f2937;
+}
+
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 16px;
+}
+
+.titulo {
+    text-align: center;
+    color: #16a34a;
+    margin-bottom: 24px;
+}
+
+.formulario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.formulario input,
+.formulario select {
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.formulario input,
+.formulario select,
+.formulario .btn {
+    flex: 1 1 100%
+}
+
+.lista {
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    border-left: 6px solid #d1d5db;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.validade {
+    font-weight: bold;
+}
+
+.item-botoes{
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    padding: 10px 16px;
+    bordedr: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: black;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.btn-principal {background: #13a34a;}
+.btn-cancelar {background: #6b7280;}
+.btn-editar {background: #2563eb;}
+.btn-excluir {background: #dc2626;}
+
+@media (min-width: 640px) {
+  .formulario input[type="text"] {
+    flex: 2 1 160px;
+  }
+  .formulario input[type="number"],
+  .formulario select,
+  .formulario input[type="date"] {
+    flex: 1 1 100px;
+  }
+
+.formulario .btn {
+    flex: 0 0 auto;
+  }
+.item {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
