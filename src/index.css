@@ -1,111 +1,172 @@
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
 body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    padding: 48px 20px;
+    background: #f5f3ed;
+    color: #252820;
     font-family: Arial, sans-serif;
-    background: rgb (96, 97, 96);
-    color: #1f2937;
+}
+
+button,
+input,
+select {
+  font: inherit;
 }
 
 .container {
-    max-width: 720px;
+    width: min(100%,720px);
     margin: 0 auto;
-    padding: 24px 16px;
 }
 
 .titulo {
+    width: 100%;
+    margin: 0 0 28px;
     text-align: center;
-    color: #16a34a;
-    margin-bottom: 24px;
+    color: #253d2c;
+    letter-spacing: -0.05rem;
+    font-size: clamp(2rem, 5vw, 2.5rem);
 }
 
 .formulario {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    background: white;
+    display: grid;
+    grid-template-columns: minmax(180px, 2fr) minmax(80px, 0.07fr) minmax(90px, 0.8fr) minmax(145px, 1.2fr) auto;
+    gap: 10px;
     padding: 16px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e7e5dd;
+    border-radius:16px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgb(37 40 32 / 6%)
 }
+
 
 .formulario input,
 .formulario select {
-    padding: 10px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    font-size: 16px;
+    width: 100%;
+    min-width: 0;
+    height: 46px;
+    padding: 0px 12px;
+    border: 1px solid #deded7;
+    border-radius: 10px;
+    background: #fff;
+    color: #252820;
 }
 
-.formulario input,
-.formulario select,
-.formulario .btn {
-    flex: 1 1 100%
+.formulario input:focus,
+.formulario select:focus {
+    outline: 3px solid rgb(52 103 65 / 15%);
+    border-color: #346741;
 }
 
 .lista {
-    background: white;
-    padding: 16px;
-    border-radius: 12px;
-    border-left: 6px solid #d1d5db;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-width: 0;
+    padding: 18px 20px;
+    border: 1px solid #e7e5dd;
+    border-left: 5px solid #346741;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 5px 16px rgb(37 40 32 / 4%);
 }
 
 .item-info {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 5px;
+    min-width: 0;
+}
+
+.item-info strong{
+    overflow-wrap: anywhere;
+    font-size: 1.05rem;
 }
 
 .validade {
+    font-size: 0.92rem;
     font-weight: bold;
 }
 
 .item-botoes{
     display: flex;
+    flex-shrink: 0;
     gap: 8px;
 }
 
-.btn {
-    padding: 10px 16px;
-    bordedr: none;
-    border-radius: 8px;
-    font-size: 1rem;
+.btn { 
+    min-height: 40px;
+    padding: 0px 14px;
+    border: none;
+    box-shadow: none;
+    border-radius: 9px;
+    color: #fff;
+    font-weight: 600;
     cursor: pointer;
-    color: black;
+    transition: filter 150ms ease, transform 150ms ease;
+    appearance: none;
+    
+}
+
+.btn:focus,
+.btn:focus-visible {
+    outline: 3px solid rgb(37 61 44 / 25%);
+    outline-offset: 2px;
 }
 
 .btn:hover {
-    opacity: 0.8;
+    filter: brightness(0.94);
+    transform: translateY(-1px);
 }
 
-.btn-principal {background: #13a34a;}
-.btn-cancelar {background: #6b7280;}
-.btn-editar {background: #2563eb;}
-.btn-excluir {background: #dc2626;}
+.btn-principal {background: #346741;}
+.btn-cancelar {background: #77796e;}
+.btn-editar {background: #546b52;}
+.btn-excluir {background: #a34436;}
 
-@media (min-width: 640px) {
-  .formulario input[type="text"] {
-    flex: 2 1 160px;
+.erro {
+    margin: -10px 0 18px;
+    color: #a34436;
+    font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  body {
+    padding: 28px 16px;
   }
-  .formulario input[type="number"],
-  .formulario select,
-  .formulario input[type="date"] {
-    flex: 1 1 100px;
+  .formulario {
+    grid-template-columns: 1fr 1fr;
   }
 
-.formulario .btn {
-    flex: 0 0 auto;
+  .formulario input[type="text"],
+  .formulario input[type="date"],
+  .formulario .btn {
+    grid-column: 1 / -1;
   }
-.item {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+}
+@media (max-width: 480px) {
+  .item {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
   }
+
+.item-botoes {
+    width: 100%;
+}
+.item-botoes .btn{
+    flex: 1;
+}
 }

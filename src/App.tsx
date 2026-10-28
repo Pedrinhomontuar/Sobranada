@@ -4,7 +4,6 @@ import {alimentosfake} from './dados';
 import type { Alimento } from './types';
 import { diasParaVencer, corDaValidade, textoDaValidade } from './utils';
 
-
 function App() {
   const [alimentos, setAlimentos] = useState<Alimento[]>(alimentosfake);
   const [nome, setNome] = useState("");
