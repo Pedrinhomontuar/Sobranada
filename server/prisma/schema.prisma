@@ -1,0 +1,18 @@
+generator client {
+    provider = "prisma-client"
+    output = "../generated/prisma"
+}
+
+datasource db {
+    provider = "postgresql"
+}
+
+
+model Alimento {
+  id         String   @id @default(uuid())
+  nome       String
+  quantidade Float    
+  unidade    String
+  validade   String   
+  criadoEm   DateTime @default(now()) // data de criação, preenchida sozinha
+}
