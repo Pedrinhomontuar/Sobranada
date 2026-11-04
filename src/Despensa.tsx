@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
 import type { Alimento } from "./types";
-import { diasParaVencer, corDaValidade, textoDaValidade } from "./utils";
+import { diasParaVencer, corDaValidade, textoDaValidade, textoDaUnidade } from "./utils";
 import { requisicao } from "./api";
 import type { Usuario } from "./api";
 import MenuUsuario from "./MenuUsuario";
@@ -157,7 +157,7 @@ function Despensa({ usuario, onSair }: Props) {
       <form className="formulario" onSubmit={salvarAlimento}>
         <input
           type="text"
-          placeholder="Nome (ex: Tomate)"
+          placeholder="Nome (ex: Arroz, Leite, ...)"
           value={nome}
           onChange={(e) => setNome(e.target.value)}
         />
@@ -170,12 +170,12 @@ function Despensa({ usuario, onSair }: Props) {
         />
 
         <select value={unidade} onChange={(e) => setUnidade(e.target.value)}>
-          <option value="un">Unidade</option>
-          <option value="kg">Quilograma</option>
-          <option value="g">Grama</option>
-          <option value="L">Litro</option>
-          <option value="ml">Mililitro</option>
-          <option value="pct">Pacote</option>
+          <option value="un">Unidade(s)</option>
+          <option value="kg">Quilograma(s)</option>
+          <option value="g">Grama(s)</option>
+          <option value="L">Litro(s)</option>
+          <option value="ml">Mililitro(s)</option>
+          <option value="pct">Pacote(s)</option>
         </select>
 
       <label className="campo-data">
@@ -202,7 +202,7 @@ function Despensa({ usuario, onSair }: Props) {
             <li key={alimento.id} className="item" style={{ borderLeftColor: cor }}>
               <div className="item-info">
                 <strong>{alimento.nome}</strong>
-                 <span>{alimento.quantidade} {alimento.unidade}</span>
+                 <span>{alimento.quantidade} {textoDaUnidade(alimento.unidade, alimento.quantidade)}</span>
                   <span className="validade" style={{ color: cor}}>{textoDaValidade(dias)}</span>
               </div>
               <div className='item-botoes'>

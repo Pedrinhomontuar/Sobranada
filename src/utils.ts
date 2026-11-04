@@ -1,3 +1,5 @@
+
+
 export function diasParaVencer(validade: string): number {
 
     const hoje = new Date();
@@ -25,4 +27,19 @@ export function textoDaValidade(dias: number): string {
     if (dias <= 7) return `Vence em ${dias} dia(s) - Cuidado!`;
     if (dias <= 30) return `Vence em ${dias} dia(s) - Fique atento!`;
     return `Vence em ${dias} dia(s)`;
+}
+
+    const UNIDADES: Record<string, {singular:string; plural:string}> = {
+        "L": { singular: "Litro", plural: "Litros" },
+        "ml": { singular: "Mililitro", plural: "Mililitros" },
+        "kg": { singular: "Quilograma", plural: "Quilogramas" },
+        "g": { singular: "Grama", plural: "Gramas" },
+        "un": { singular: "Unidade", plural: "Unidades" },
+        "pct": { singular: "Pacote", plural: "Pacotes" }
+    };
+    
+export function textoDaUnidade(unidade: string, quantidade: number): string {
+    const nomes = UNIDADES[unidade];
+    if (!nomes) return unidade; // Retorna a unidade original se não estiver no mapeamento
+    return quantidade === 1 ? nomes.singular : nomes.plural;
 }
