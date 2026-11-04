@@ -170,19 +170,22 @@ function Despensa({ usuario, onSair }: Props) {
         />
 
         <select value={unidade} onChange={(e) => setUnidade(e.target.value)}>
-          <option value="un">Un</option>
-          <option value="kg">Kg</option>
-          <option value="g">g</option>
-          <option value="L">L</option>
-          <option value="ml">Ml</option>
-          <option value="pct">Pct</option>
+          <option value="un">Unidade</option>
+          <option value="kg">Quilograma</option>
+          <option value="g">Grama</option>
+          <option value="L">Litro</option>
+          <option value="ml">Mililitro</option>
+          <option value="pct">Pacote</option>
         </select>
 
+      <label className="campo-data">
+        <span>Validade:</span>
         <input
           type="date"
           value={validade}
           onChange={(e) => setValidade(e.target.value)}
-        />
+          />
+      </label>
 
         <button type="submit" className="btn btn-principal">{editandoId ? "Salvar alterações" : "Adicionar"}</button>
         {editandoId && (<button type="button" className="btn btn-cancelar" onClick={limparFormulario}>Cancelar</button>)}

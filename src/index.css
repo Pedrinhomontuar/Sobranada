@@ -304,3 +304,26 @@ select {
 .menu-sair:hover {
   background: #fbf3f1;
 }
+
+.formulario .campo-data {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1 1 100%;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+@media (min-width: 640px) {
+  .formulario .campo-data {
+    flex: 1 1 140px;
+  }
+}
+
+.formulario .campo-data input {
+  flex: none;
+  width: 100%;
+  min-height: 44px;
+  background: white;
+  color: #1f2937;
+}
