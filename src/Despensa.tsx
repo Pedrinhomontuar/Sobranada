@@ -4,6 +4,7 @@ import type { Alimento } from "./types";
 import { diasParaVencer, corDaValidade, textoDaValidade } from "./utils";
 import { requisicao } from "./api";
 import type { Usuario } from "./api";
+import MenuUsuario from "./MenuUsuario";
 
 type Props = {
   usuario: Usuario;
@@ -149,8 +150,10 @@ function Despensa({ usuario, onSair }: Props) {
 
   return (
     <div className="container">
-      <h1 className="titulo">Sobranada</h1>
-
+      <header className="topo">
+        <h1 className="titulo">Sobranada</h1>
+        <MenuUsuario usuario={usuario} onSair={onSair} />
+      </header>
       <form className="formulario" onSubmit={salvarAlimento}>
         <input
           type="text"
